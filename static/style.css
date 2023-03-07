@@ -1,0 +1,149 @@
+#gifplayer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#average-color {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 50px;
+	z-index: 10;
+}
+
+canvas {
+position: relative  ;
+  width: 100%; /* Set the width of the canvas */
+  height: 100%; /* Set the height of the canvas */
+  right: 0;
+  top: 0;
+  z-index: 20;
+
+}
+
+
+microphone {
+
+  width: 50%;
+  height: 10%;
+  font-size: 18px;
+  color: #444;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  margin-top: 150px;
+}
+
+
+/* Style the options in the dropdown menu */
+option {
+  width: 100%;
+  font-size: 16px;
+  color: #555;
+  background-color: #fff;
+}
+
+
+
+
+.controls-panel {
+    transform: translateX(-0%);
+
+  position: fixed;
+  top: 20%;
+  left: 0;
+  width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px 0px 0px 10px;
+  z-index: 9999;
+  font-size:  12px;
+}
+
+.controls-panel * {
+  margin: 10px 0 10px 0;
+}
+
+#average-color {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  border: 0px solid #000;
+  z-index:  -10;
+}
+
+
+#options {
+  width:100%;
+  font-size: 50px;
+}
+.oppositeColor{
+  color: oppositeColor;
+}
+.header {
+  position: fixed;
+  top: 0%;
+  left: 50%;
+    transform: translateX(-50%);
+  z-index: 100;
+  padding: 2px;
+  font-size: 18px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  z-index:  10;
+}
+.slide-in-left {
+  transform: translateX(-100%);
+  animation-name: slideInLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+.fade-out {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+@font-face {
+    font-family: 'PressStart2P';
+    src: url('PressStart2P-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'PressStart2P', sans-serif;
+}

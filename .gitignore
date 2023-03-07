@@ -1,0 +1,10 @@
+.DS_Store
+*.xcodeproj
+*.sdf
+*.sln
+*.rc
+*.suo
+Build
+Intermediate
+Saved
+Binaries
