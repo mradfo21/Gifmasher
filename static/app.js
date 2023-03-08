@@ -194,9 +194,6 @@ function detectBeats() {
   }
    BEAT_TIME+= 1.0*deltaTime;
 
-  // Perform the beat detection algorithm here
-  // (see below for an example)
-  // Schedule the next beat detection
 
 	}
   requestAnimationFrame(detectBeats);
