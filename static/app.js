@@ -132,7 +132,17 @@ function draw() {
 	    const height = canvas.height * percent;
 	    const offset = canvas.height - height - 1;
 	    const barWidth = canvas.width / bufferLength;
-	    canvasContext.fillStyle = 'black';
+      const averageColorDiv = document.getElementById('average-color');
+
+      // Get the color of the average-color div
+      const averageColor = window.getComputedStyle(averageColorDiv).backgroundColor;
+      // Parse the RGB values from the string
+    const colorParts = averageColor.match(/\d+/g);
+    const r = colorParts[0] * 2;
+    const g = colorParts[1] * .25;
+    const b = colorParts[2] * .25;
+
+      canvasContext.fillStyle = `rgb(${r}, ${g}, ${b})`;
 	    canvasContext.fillRect(i * barWidth, offset, barWidth, height);
 	  }
 	}
@@ -417,7 +427,7 @@ function switchGif(){
 	    	requestLightingChange(lightingChangeURL, averageColor.r,averageColor.g,averageColor.b)
 			//console.log("image color = " +averageColor.r+"," +averageColor.g+"," + averageColor.b)
 
-			var textColor = "rgb(" + oppositeColor[0]*3 + ", " +  oppositeColor[1]*.5 + ", " +  oppositeColor[2]*.5  + ")"; // create an rgb string from the average color
+			var textColor = "rgb(" + oppositeColor[0]*2 + ", " +  oppositeColor[1]*.25 + ", " +  oppositeColor[2]*.25  + ")"; // create an rgb string from the average color
 			document.getElementById("gifmasher").style.color = textColor;
 			document.getElementById("options").style.color = textColor;
 			document.getElementById("footer").style.color = textColor;
@@ -461,7 +471,7 @@ window.onload = function () {
 const thresholdSlider = document.getElementById('threshold-slider');
 
 // Set an initial value for the slider
-let thresholdValue = 1.4;
+let thresholdValue = 1.0;
 thresholdSlider.value = thresholdValue;
 
 // Listen for keydown events on the document
@@ -475,6 +485,14 @@ document.addEventListener('keydown', event => {
     thresholdValue+=.1;
   }
   
+  if (event.key === 'ArrowLeft') {
+    // If the key pressed was the left arrow key, decrement the currentValue by 1
+    thresholdValue-=.7;
+  } else if (event.key === 'ArrowRight') {
+    // If the key pressed was the right arrow key, increment the currentValue by 1
+    thresholdValue+=.7;
+  }
+
   // Update the slider value with the new currentValue
   thresholdSlider.value = thresholdValue;
 });
