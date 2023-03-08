@@ -140,7 +140,13 @@ function draw() {
 }
 
 
-
+function flashBeat(){
+  const beatDiv = document.getElementById('beat');  
+  beatDiv.classList.add('beatInvisible');
+  setTimeout(() => {
+    beatDiv.classList.remove('beatInvisible');
+  }, 100);
+}
 function detectBeats() {
   // Get the audio data from the analyzer
   if (analyzer!= null){
@@ -165,7 +171,9 @@ function detectBeats() {
    // Check if a beat was detected
   if (maxAmplitude > localthreshold) {
     // A beat was detected!
-    console.log('Beat detected at time', currentTime);
+    //console.log('Beat detected at time', currentTime);
+    flashBeat();
+
     if (BEAT_TIME > getMinInterval()){
 	    BEAT_TIME = 0.0;
 	    localthreshold = getThreshold();
@@ -194,8 +202,8 @@ function detectBeats() {
 
 function requestGifList(theUrl)
 {
-	console.log("requesting gif url: "+theUrl)
-	console.log("global player: "+gifplayer)
+	//console.log("requesting gif url: "+theUrl)
+	//console.log("global player: "+gifplayer)
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
     	if (request.responseText != undefined && request.responseText.length > 10 && loadedGifs == false){
@@ -271,7 +279,7 @@ function getAverageColor(imageSrc) {
 
 function requestLightingChange(theUrl, red, green, blue)
 {
-	console.log("requesting lighting change");
+	//console.log("requesting lighting change");
     var request = new XMLHttpRequest();
     request.responseType = 'json';
     request.onload = function() {
@@ -290,12 +298,12 @@ function requestLightingChange(theUrl, red, green, blue)
 
 function lightingChanedRecieved(data)
 {
-	console.log("lighting change: "+data)
+	//console.log("lighting change: "+data)
 }
 function gifListReceived(data)
 {
 	filenames =  (JSON.parse(data).filenames) 
-	console.log("ok got "+filenames.length + " gifs");
+	//console.log("ok got "+filenames.length + " gifs");
 	for (var i = 0; i < filenames.length-1; i++){
 		//console.log("pushing: "+filenames[i])
 		gifLoadList.push(filenames[i]);
@@ -413,6 +421,7 @@ function switchGif(){
 			document.getElementById("gifmasher").style.color = textColor;
 			document.getElementById("options").style.color = textColor;
 			document.getElementById("footer").style.color = textColor;
+      document.getElementById("beat").style.color = textColor;
 
 			var averageColorDiv = document.getElementById('average-color');
 	        averageColorDiv.style.backgroundColor = 'rgb('+averageColor.r+','+averageColor.g+','+averageColor.b+')';
@@ -454,7 +463,7 @@ window.addEventListener('mousemove', function(event) {
   const mouseX = event.clientX;
   const screenWidth = window.innerWidth;
   const distanceFromLeft = mouseX / screenWidth;
-  console.log(distanceFromLeft)
+  //console.log(distanceFromLeft)
 
   // If the mouse is within 20% of the left edge of the screen, animate the options panel
   if (distanceFromLeft < 0.3) {

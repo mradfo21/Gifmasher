@@ -137,6 +137,21 @@ option {
 }
 
 
+#beat {
+  font-size: 70px;
+}
+
+.beatInvisible {
+
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.beatVisible {
+  opacity: 1;
+}
+
+
 @font-face {
     font-family: 'PressStart2P';
     src: url('PressStart2P-Regular.ttf') format('truetype');
