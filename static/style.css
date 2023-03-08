@@ -55,7 +55,7 @@ option {
 
   position: fixed;
   top: 20%;
-  left: 0;
+  left: 2%;
   width: 400px;
   padding: 20px;
   background-color: #fff;
@@ -137,8 +137,8 @@ option {
 }
 
 
-#beat {
-  font-size: 70px;
+.beat {
+  font-size: 50px;
 }
 
 .beatInvisible {
@@ -148,6 +148,7 @@ option {
 }
 
 .beatVisible {
+
   opacity: 1;
 }
 
