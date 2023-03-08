@@ -456,6 +456,31 @@ window.onload = function () {
 
 
 
+
+
+const thresholdSlider = document.getElementById('threshold-slider');
+
+// Set an initial value for the slider
+let thresholdValue = 1.4;
+thresholdSlider.value = thresholdValue;
+
+// Listen for keydown events on the document
+document.addEventListener('keydown', event => {
+  // Check if the key pressed was the left or right arrow key
+  if (event.key === 'ArrowDown') {
+    // If the key pressed was the left arrow key, decrement the currentValue by 1
+    thresholdValue-=.1;
+  } else if (event.key === 'ArrowUp') {
+    // If the key pressed was the right arrow key, increment the currentValue by 1
+    thresholdValue+=.1;
+  }
+  
+  // Update the slider value with the new currentValue
+  thresholdSlider.value = thresholdValue;
+});
+
+
+
 window.addEventListener('mousemove', function(event) {
 	const optionsPanel = document.querySelector('.controls-panel');
 
@@ -499,8 +524,8 @@ window.addEventListener('mousemove', function(event) {
 
 
 
-	const thresholdValue = document.getElementById('threshold-value');
-	const minIntervalValue = document.getElementById('min_interval-value');
+	const thresholdValueElement = document.getElementById('threshold-value');
+	const minIntervalValueElement = document.getElementById('min_interval-value');
 
 	//update loop
 	//switchGif();
@@ -513,8 +538,8 @@ window.addEventListener('mousemove', function(event) {
 			currentFrameChangeTime = 5+Math.random()*(20*Math.random());
 			frameChangeTime = 0.0;
 			//switchGif();
-			thresholdValue.textContent = getThreshold();
-			minIntervalValue.textContent = getMinInterval();
+			thresholdValueElement.textContent = getThreshold();
+			minIntervalValueElement.textContent = getMinInterval();
 
 		}
 		frameChangeTime += .1;
