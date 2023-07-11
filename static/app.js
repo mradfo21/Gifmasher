@@ -103,6 +103,7 @@ document.addEventListener('click', function () {
 
 
 
+
 function setupAudioAnalysis(){
 
 	// Create an analyzer node
@@ -402,12 +403,21 @@ function hslToRgb(h, s, l) {
 }
 
 
-
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 function switchGif(){
 
 	if ( gifLoadedList.length > 1){
 
+    // Sort the array using the random sort function
+    //gifLoadedList.sort(randomSort);
+    gifLoadedList= shuffleArray(gifLoadedList)
 
 		currentPlayingGif+=1;
 		if (currentPlayingGif > gifLoadedList.length-1){
@@ -421,7 +431,7 @@ function switchGif(){
 	    .then(function(averageColor) {
 	    	var oppositeColor = getOppositeColor([averageColor.r,averageColor.g,averageColor.b]);
 
-	    	requestLightingChange(lightingChangeURL, averageColor.r,averageColor.g,averageColor.b)
+	    	//requestLightingChange(lightingChangeURL, averageColor.r,averageColor.g,averageColor.b)
 			//console.log("image color = " +averageColor.r+"," +averageColor.g+"," + averageColor.b)
 
 			var textColor = "rgb(" + oppositeColor[0]*2 + ", " +  oppositeColor[1]*.25 + ", " +  oppositeColor[2]*.25  + ")"; // create an rgb string from the average color
